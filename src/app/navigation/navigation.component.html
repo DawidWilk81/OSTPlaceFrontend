@@ -1,0 +1,126 @@
+
+    <!-- NAVBAR FOR DESKTOP -->
+    <nav class="nav m-0 sticky-top p-0" id="desktopNav">
+      <!-- NAVIGATION BRAND -->
+      <div class="m-0 " id="brand" (click)="goHome()"><span style='color: #143E00;'>OST</span>Place</div>
+        <div id="userInfo" class="m-0">
+          <div class="row m-0 p-0">
+
+            <div class="col-12 p-0 d-flex justify-content-center alignt-items-center" id="userAvatar_img">
+                <img [src]="userInformation.avatar" alt="userAvatar">
+            </div>
+
+            <div class="col-12 p-0 mt-2" id="userAvatar_UserInfo">
+              <div class="col-12" id="username">
+                <b *ngIf="userInformation">{{userInformation.user}}</b>
+              </div>
+              <div class="col-12" id="balanceInfo">
+                <div id="balance">Balance: <b>{{userInformation.balance|currency}}</b></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+        <div id="navigationButtons" class="m-0 mt-2 p-0 ">
+          <ul class="m-0">
+            <li [ngClass]="{'disabled': url.endsWith('home')}" (click)="changeDir('home')">
+              <fa-icon [icon]="home" [ngStyle]="url.endsWith('home') && {'color': '#14D80d'}" ></fa-icon>
+              <b [ngClass]="{'clickedLi': url.endsWith('home')}">Home</b>
+            </li>
+
+            <li [ngClass]="{'disabled': url.includes('myOST')}" (click)="changeDir('home/myOST')" >
+                <fa-icon  [icon]="disc" [ngStyle]="url.includes('myOST') && {'color': '#14D80d', 'padding-top':'1.5%'}"></fa-icon>
+              <b [ngClass]="{'clickedLi': url.endsWith('myOST')}">My OSTS</b>
+            </li>
+            
+            <li [ngClass]="{'disabled': url.includes('addSong')}" (click)="changeDir('home/addSong')">
+              <fa-icon [icon]="plus"[ngStyle]="url.includes('addSong') && {'color': '#14D80d'}" ></fa-icon>
+              <b [ngClass]="{'clickedLi': url.endsWith('addSong')}"> Add OST</b> 
+            </li>
+
+            <li  [ngClass]="{'disabled': url.includes('basket')}" (click)="changeDir('home/basket')">
+              <fa-icon [icon]="basket" [ngStyle]="url.includes('basket') && {'color': '#14D80d'}"></fa-icon>
+              <b [ngClass]="{'clickedLi': url.endsWith('basket')}">Basket</b>
+            </li>
+            <li  [ngClass]="{'disabled': url.includes('settings')}" (click)="changeDir('home/settings')">
+              <fa-icon [icon]="wrench" [ngStyle]="url.includes('settings') && {'color': '#14D80d'}"></fa-icon>
+              <b [ngClass]="{'clickedLi': url.endsWith('settings')}">Settings</b>
+            </li>
+          </ul>
+         
+        </div>
+        <button class="btn btn-success mt-auto" (click)="logOut()"><fa-icon [icon]="logout" class="mr-1"></fa-icon> Logout</button>
+      </nav>
+<!-- COLLAPSED NAVBAR - FOR MOBILE -->
+    <div class="navbar-collapse m-0 pr-1 sticky-top" id="collapsedNavbar">
+      <div class="row m-0 p-0">
+        <div class="col-12 sticky-top" id="brand" (click)="changeDir('home')"><span style='color: #143E00;'>OST</span>Place</div>
+        <div id="userInfo">
+            <div class="col-8 mx-auto" id="avatar"> 
+              <img [src]='userInformation.avatar' *ngIf="userInformation.avatar.length >= 5"/>
+            </div>
+            <div class="col-12 p-0" id="username">
+              {{userInformation.user}}
+            </div>
+        </div>
+      
+
+      </div>
+      <button class="btn btn-success mt-auto" (click)="showNaviMassive()">Navigation</button>
+      <button class="btn btn-success logOutBtn" (click)="logOut()"><fa-icon [icon]="logout" class="mr-1"></fa-icon> Logout</button>
+    </div>
+    <nav id="navigationMassive" *ngIf="showCollapsedNavbar">
+      <div id="userInfo" class="m-0 mt-1">
+        <div class="row m-0 p-0">
+          <div class="col-12 p-0 d-flex justify-content-center alignt-items-center" id="userAvatar_img">
+              <img [src]="userInformation.avatar" alt="userAvatar">
+          </div>
+
+          <div class="col-12 p-0" id="userAvatar_UserInfo">
+            <div class="col-12" id="username">
+              <b *ngIf="userInformation">{{userInformation.user}}</b>
+            </div>
+            <div class="col-12" id="balanceInfo">
+              <div id="balance">Balance: <b>{{userInformation.balance|currency}}</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <ul class="navbar-nav mx-auto d-flex mt-2">
+          <!-- <li class="nav-item active" >
+            <b class="nav-link " id='walletMini'>
+              Balance
+             <fa-icon [icon]='dollar' class="ml-1"></fa-icon> 
+             {{userInformation.balance}}
+            </b>
+          </li> -->
+          <li class="nav-item active clicked " (click)="changeDir('home')">
+            <b  [ngStyle]="url.endsWith('home') && {'color': '#14D80d'}" class="nav-link" >
+              <fa-icon [icon]='home'></fa-icon>
+            </b>
+            Home
+          </li>
+          <li class="nav-item" (click)="changeDir('home/myOST')">
+            <b class="nav-link" [ngStyle]="url.includes('myOST') && {'color': '#14D80d'}"><fa-icon [icon]='disc'></fa-icon></b>
+            MyOST
+          </li>
+          <li class="nav-item" (click)="changeDir('home/basket')">
+            <b class="nav-link"><fa-icon [icon]='basket' [ngStyle]="url.includes('basket') && {'color': '#14D80d'}"></fa-icon></b>
+            Basket
+          </li>
+          <li class="nav-item" (click)="changeDir('home/addSong')">
+            <b class="nav-link" [ngStyle]="url.includes('addSong') && {'color': '#14D80d'}">
+                <fa-icon [icon]='plus'></fa-icon>
+            </b>
+            Add OST
+          </li>
+          <li class="nav-item" (click)="changeDir('home/settings')" [ngStyle]="url.includes('settings') && {'color': '#14D80d'}">
+            <b class="nav-link"><fa-icon [icon]='wrench'></fa-icon></b>
+            Settings
+          </li>
+
+        </ul>
+        <button class="btn btn-danger mb-sm-5" (click)="showNaviMassive()">EXIT</button>
+    </nav>

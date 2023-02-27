@@ -1,0 +1,106 @@
+    <div class="container-fluid m-0 p-0" id="addSongWhole" >
+        <div class="alert alert-success" id="alertSize" *ngIf="alertSuccess" role="alert">
+            <fa-icon [icon]="xSign" (click)="hideAlert()"></fa-icon>
+            Congratulations your OST has been added into database.
+          </div>
+          <div class="alert alert-info"  *ngIf="alertSize" role="alert">
+            <fa-icon [icon]="xSign" (click)="hideAlertSize()"></fa-icon>
+            Your image resolution is: {{imgWidth}} x {{imgHeight}}. Accepted resolution is below 3000 x 5000
+          </div>
+    <!-- Choose tags Container -->
+    <div id="tagList" class="p-3" *ngIf="getTags">
+        <fa-icon [icon]="xmark" (click)="hideTags()"></fa-icon>
+            <div class="col-12" id="searchTag">
+                <input type="text" name="tagInput" [(ngModel)]="searchTagsInputValue" (change)="filterTags($event)">
+            </div>
+            <div class="col-12 p-2" id="tagsContainer">
+                <ul>
+                    <li *ngFor="let x of FilteredTags; index as i" (click)="clickTag(i)">{{FilteredTags[i]['name']}}</li>
+                </ul>
+            </div>
+            <div class="col-12 p-2" id="choosed">
+                Choosed tags:
+                <ul class="p-0">
+                    <li class='mt-2' *ngFor="let tag of choosedTags; index as i" (click)="clickChoosedTag(i)"> {{choosedTags[i]}} </li>
+                </ul>
+            </div>
+            <div id="buttonPlace">
+                <button class="btn btn-primary mt-auto mx-auto" (click)="ConfirmTags()">Confirm</button>
+            </div>
+    </div>
+    <!-- FORM CONTAINER -->
+    
+        <div class="row m-0 p-0">
+            <div class="col-2 col-sm-2 col-md-3 col-lg-2 col-xl-1 p-0" id="sideBarContainer">
+                <app-navigation></app-navigation>
+            </div>
+            <!-- MAIN CONTAINER -->
+            <div class="col-10 col-sm-10 col-md-9 col-lg-10 col-xl-11 p-0" id="addSongContainer">
+                <!-- ADD SONG FORM  -->
+
+                <form id="addSong" class="p-3" #addSongForm = "ngForm" (ngSubmit)="sendSong(addSongForm)">
+                    
+                   <div class="form-group p-1" id="cover">
+                        <div id="addCover">
+                            <label for="coverInput">Cover for OST</label>
+                            <input type="file"  class="form-control" id="coverInput" required minlength="1" maxlength="64"
+                            name="cover" (change)="onImageChange($event)">
+                            <span *ngIf="coverError" style="color:red;">Added file is invalid</span>
+                            <span *ngIf="coverSizeError" style="color:red">Added file is too big, max width is 3264 x 2448 px</span>
+                        </div>
+                        <div id="showCover">
+                            <i *ngIf="!imageUrl"><span style='color: #143E00;'>OST</span>Place</i>
+                            <img [src]='imageUrl' *ngIf='imageUrl'/>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" id="title">
+                        <label for="titleInput">Title</label>
+                        <input type="text"  class="form-control" id="titleInput" required maxlength="64"
+                        [(ngModel)]="song.title" name="title" placeholder="Ex: Best beat made for RPG games" #title="ngModel"
+                        [ngClass]="{'invalidInput':title.invalid && title.touched}">
+                        <small>Max length 64 characters</small>
+                    </div>
+                    <div class="form-group d-flex flex-column" id="SongItags">
+                        <div class="row">
+                            <div class="col-5" id="song">
+                                <div class="form-group " id="ost">
+                                    <label for="ostInput">Add OST</label>
+                                    <input type="file"  class="form-control text-center" id="ostInput" required 
+                                    (change)="onSongChange($event)" name="ost">
+                                    <p *ngIf="ostError" style="color:red;">Added file is not mp3 nor wav</p>
+                                    <small>Only *.mps or *.vaw</small>
+                                    <b class="ShowSize"  *ngIf="songSize < 13063158"><fa-icon [icon]='checkMark' ></fa-icon>Song weight less than 10MB. </b>
+                                    <b class="ShowSize"  *ngIf="songSize > 13063158" style="color:red"><fa-icon [icon]='checkMark' ></fa-icon>Song must weight less than 10MB. </b>
+                                </div>
+                            </div>
+                            <div class="col-6" id="tags">
+                                
+                                <button type='button' class='btn' id='addTagBTN' (click)="showTags()">
+                                    Add tags</button>
+                                <ul class="m-0 p-1 p-md-2">
+                                    <li *ngFor="let tag of choosedTags">{{tag}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group mt-5" id="price">
+                        <label for="priceInput">Choose price for OST</label>
+                        <input type="number"  class="form-control" id="priceInput" #priceInput (ngModelChange)="checkPrice($event)" required [(ngModel)]="song.price" name="priceInput" placeholder="1">
+                    </div>
+
+                    <div class="form-group mt-5" id="desc">
+                        <label for="descArea">Description(Max. 124 characters)</label>
+                        <textarea required type="text"  class="form-control" id="descArea" minlength="5" maxlength="124"
+                        [(ngModel)]="song.desc" name="alterEgo" placeholder="OST made for your game"></textarea>
+                    </div> 
+                    <button type="submit" class="btn btn-success" [disabled]="!addSongForm.form.valid || (ostError || coverError || coverSizeError) || song.price % 1 != 0 " id="sendOST">SEND</button>
+                </form> 
+            </div>
+        </div>
+
+</div>

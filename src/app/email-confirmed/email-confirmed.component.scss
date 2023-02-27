@@ -1,0 +1,97 @@
+@import '../../scss/_variables.scss';
+@import '../../scss/_placeholders.scss';
+@import '../../scss/_mixins.scss';
+
+#settingsWhole{
+    background: rgb(0,0,0);
+    background: $contentBackground;
+    height: 100vh;
+    position: relative;
+    font-family: 'Imbue', serif;
+    min-width: 400px;
+    color:#f9f9f9;
+    .row{
+        height: 100%;
+        //navigationBar
+        #sideBarContainer{
+            background-color: $navbarColor;
+            height: $pageHeight;
+        
+    
+            @media only screen  and (min-width:0){
+                font-size: 6vw;
+            }
+            @media only screen  and (min-width:360px){
+                font-size: 4vw;
+            }
+            @media only screen  and (min-width:760px){
+                font-size: 4vw;
+            }
+            // border:inset 1px solid #f9f9f9f9;
+            nav{
+                height: 100%;
+                min-width: 120px;
+                position: relative;
+                -webkit-box-shadow: inset -20px 1px 13px -15px rgba(20, 20, 21, 0.88);
+                -moz-box-shadow: inset -20px 1px 13px -15px rgba(20, 20, 21, 0.88);
+                box-shadow: inset -20px 1px 13px -15px rgba(20, 20, 21, 0.88);
+                .row{
+                    height: 100vh;
+                    position: fixed;
+    
+                    #brand{
+                        height: 20%;
+                        text-align: center;
+                        &:hover{
+                            cursor: pointer;
+                            filter:blur(1px);
+                        }
+                    }
+                    #naviButtons{
+                        height: 10%;
+                        width: 70%;
+                        .btn{
+                            width: 98%;
+                            height: 3.5vh;
+                            border-radius: 50px;
+                        }
+                    }
+                }
+               
+            }
+        }
+        // RIGHT CONTENT 
+        #settingsContainer{
+            height: 100%;
+            @extend %centerFlex;
+            -webkit-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+            -moz-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+            box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+
+           #settings{
+            position: relative;
+            border-radius: 25px;
+            height:15vw;
+            width: auto;
+            background: rgba(18, 92, 18, 0.445);
+            // box-shadow: 0 8px 17px 0 rgba(0, 255, 13, 0.37);
+            backdrop-filter: blur( 0.5px );
+            -webkit-backdrop-filter: blur( 0.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding:10px;
+            #check{
+                font-size:5vw;
+                color:rgba(0, 199, 0, 0.904);
+            }
+            h2{
+                margin-left:10px;
+            }
+           }
+        }
+    }
+
+}                        

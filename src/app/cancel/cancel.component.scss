@@ -1,0 +1,57 @@
+@import '../../scss/_variables.scss';
+@import '../../scss/_placeholders.scss';
+@import '../../scss/_mixins.scss';
+
+#settingsWhole{
+    background: rgb(0,0,0);
+    background: $contentBackground;
+    height: 100vh;
+    position: relative;
+    font-family: 'Imbue', serif;
+    min-width: 400px;
+    color:#f9f9f9;
+    .row{
+        @extend %MaxSize;
+        //navigationBar
+        #sideBarContainer{
+            padding: 0;
+            height: 100vh;
+            -webkit-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+            -moz-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+            box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+        }
+        // RIGHT CONTENT 
+        #settingsContainer{
+            height: 100%;
+            @extend %centerFlex;
+            -webkit-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+            -moz-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+            box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+
+           #settings{
+            position: relative;
+            border-radius: 25px;
+            height:15vw;
+            width: auto;
+            background: rgba(139, 4, 4, 0.445);
+            // box-shadow: 0 8px 17px 0 rgba(0, 255, 13, 0.37);
+            backdrop-filter: blur( 0.5px );
+            -webkit-backdrop-filter: blur( 0.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding:10px;
+            #cancel{
+                font-size:5vw;
+                color:rgba(199, 0, 0, 0.904);
+            }
+            h2{
+                margin-left:10px;
+            }
+           }
+        }
+    }
+
+}                        

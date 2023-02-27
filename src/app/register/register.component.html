@@ -1,0 +1,48 @@
+
+
+<div class="container-fluid m-0 p-0" id="whole">
+    <div id="brand" routerLink=""><span style='color: #143E00'>OST</span>Place</div>
+        <div id="registerForm" class="row p-4">
+
+            <form #registerForm="ngForm" (ngSubmit)="registerUser()">
+              <!-- FORM -->
+                <h2 class="text-center"><b>Register</b></h2>
+                <div class="form-group">
+                  <label for="registerInput">Login</label>
+                  <input type="text" [ngClass]="{'invalidInput':username.invalid && username.touched}" minlength="6" maxlength="20" [(ngModel)]="userInfo.username" name="username" #username="ngModel" required 
+                  (focus)="logFocus=true" (focusout)="logFocus=false" class="form-control text-center" id="loginInput" aria-describedby="loginHelp" placeholder="Enter username">
+                </div>
+                <div class="form-group" *ngIf="logFocus" >
+                  <p><b><fa-icon class='mr-1' [icon]="check" *ngIf="username.value[5]"></fa-icon> At least 6 letters</b></p>
+                  <p><b><fa-icon class='mr-1' [icon]="check" *ngIf="!username.value[29]"></fa-icon> Maximum 30 letters</b></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input class='form-control' type="email" (change)="validateEmail($event)" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" ngModel name="emailInput" #emailInput="ngModel" required [(ngModel)]="userInfo.email"
+                        class="form-control text-center"  id="emailInput" aria-describedby="emailInput"  placeholder="Enter Email">
+                    <small *ngIf='emailInUse' style="color:red; font-size:1.2vw">email error - bad or already in use </small>
+                </div>
+
+                <div class="form-group">
+                  <label for="InputPassword">Password</label>
+                  <input type="password" autocomplete="off" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" (focus)="passFocus=true" (focusout)="passFocus=false" [ngClass]="{'invalidInput':password.invalid && password.touched}" ngModel name="password" #password="ngModel" required minlength="6" maxlength="30"
+                  class="form-control text-center" id="InputPassword" placeholder="Enter password" [(ngModel)]="userInfo.password" (change)="validatePassword($event)">
+                </div>
+                  <div class="form-group" *ngIf="password.invalid && password.dirty">
+                  <p><b><fa-icon class='mr-1' [icon]="check" *ngIf="password.value[6]"></fa-icon> At least 6 letters</b></p>
+                  <p><b><fa-icon class='mr-1' [icon]="check" *ngIf="!password.value[29]"></fa-icon> Maximum 30 letters</b></p>
+                  <p><b style="text-decoration:underline"><fa-icon class='mr-1' [icon]="check" *ngIf="password.valid"></fa-icon>** At least one capital letter and number</b></p>
+                </div>
+                <div class="form-group">
+                    <label for="InputPassword2">Confirm password</label>
+                    <input type="password" autocomplete="off" ngModel name="password2" #password2="ngModel" required 
+                    [ngClass]="{'invalidInput':(password.value != password2.value) && password2.touched}" class="form-control text-center"  id="InputPassword2" placeholder="Confirm password">
+                    <small *ngIf="(password.value != password2.value) && password2.touched" style="color:red">Passwords are not identical</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary mt-2" [disabled]="!registerForm.valid || (password.value != password2.value)" >Submit</button>
+            </form>
+        </div>
+  </div>
+  

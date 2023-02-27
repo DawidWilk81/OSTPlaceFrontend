@@ -1,0 +1,182 @@
+@import '../../scss/_variables.scss';
+@import '../../scss/_placeholders.scss';
+@import '../../scss/_mixins.scss';
+@import '../../scss/_keyframes.scss';
+
+#whole{
+    height: 100vh;
+    background: rgb(0,0,0);
+    background: $contentBackground;
+    position: relative;
+    font-family: 'Imbue', serif;
+    color:#f9f9f9;
+    @extend %centerFlex;
+
+    #brand{
+        position: absolute;
+        top:0;
+        left:10px;
+        @media only screen  and (min-width:0){
+            font-size: 6vw;
+        }
+        @media only screen  and (min-width:360px){
+            font-size: 4vw;
+        }
+        @media only screen  and (min-width:760px){
+            font-size: 4vw;
+        }
+        &:hover{
+            cursor: pointer;
+            top:2px;
+        }
+    }
+
+    #loginForm{
+        width: 30%;
+        height: auto;
+        min-width: 150px;
+        position: relative;
+        background-color: $loginBackground;
+        min-width: 150px;
+        border-radius: 16px;
+        overflow:hidden;
+        // background: rgb(19,19,19);
+        // background: -moz-linear-gradient(139deg, rgba(19,19,19,1) 0%, rgba(20,20,20,1) 51%, rgba(23,23,23,0.9471989479385504) 100%);
+        // background: -webkit-linear-gradient(139deg, rgba(19,19,19,1) 0%, rgba(20,20,20,1) 51%, rgba(23,23,23,0.9471989479385504) 100%);
+        // background: linear-gradient(139deg, rgba(19,19,19,1) 0%, rgba(20,20,20,1) 51%, rgba(23,23,23,0.9471989479385504) 100%);
+        
+        @media only screen  and (min-width:0){
+            width: 50%;
+            height: 45%;
+        }
+        @media only screen  and (min-width:760px){
+            width: 40%;
+            height: 45%;
+        }
+        @media only screen  and (min-width:1240px){
+            width: 30%;
+            height: 50%;
+        }
+
+        .conic{
+            width: 200%;
+            height: 200%;
+            // background-color: rgba(27, 27, 27, 0.918);
+            position: absolute;
+            background-image: conic-gradient(transparent, transparent, transparent,  #239400f9);
+            z-index: -1;
+            animation: loadingCircles 4s linear infinite;
+
+
+        }
+        .conic2{
+            width: 200%;
+            height: 200%;
+            // background-color: rgba(27, 27, 27, 0.918);
+            position: absolute;
+            background-image: conic-gradient(transparent, transparent, transparent,  #239400f9);
+            z-index: -1;
+            animation: loadingCircles 4s linear infinite;
+            animation-delay: -2s;
+
+        }
+        form{
+            width: 100%;
+            height: 97%;
+            margin:0 auto;
+            display:flex;
+            margin:5px;
+            flex-direction: column;
+            position: relative;
+            padding:10px;
+            z-index: 20;
+            .form-group{
+                input{
+                    transition: 0.3s;
+                    color:#f9f9f9f9;
+                    background-color: #131313ee;
+                    border:#0303031f;
+                    border-bottom: 2px solid rgb(42, 119, 36);
+
+                }
+                input::placeholder{
+                    color:#f9f9f9;
+                }
+                input:focus{
+                    background-color: #161616c5;
+                    box-shadow: 10px 15px #0808087e;
+                    // border:1px solid #f9f9f9;
+                }
+            }
+            span{
+                font-size:1vw;
+                margin-left:auto;
+                margin-right: auto;
+                margin-top:10px;
+                @media only screen  and (min-width:0){
+                    font-size: 5vw;
+                }
+                @media only screen  and (min-width:360px){
+                    font-size: 3vw;
+                }
+                @media only screen  and (min-width:760px){
+                    font-size: 2vw;
+                }
+                @media only screen  and (min-width:1024px){
+                    font-size: 1.2vw;
+                }
+            }
+        }
+        label{
+            @include respectFont(3vw, 3vw, 2vw, 1.5vw, 1.3vw);
+        }
+        small{
+             @include respectFont(3vw, 2vw, 1.5vw, 1vw, 0.9vw);
+        }
+    }
+}
+
+.invalidInput{
+    border-bottom:2px solid red !important;
+}
+
+.dott{
+    color:red;
+    margin-left:5px;
+}
+
+
+p{
+    text-align: center;
+    color: #f0f0f0f9;
+    @include respectFont(2vw, 2vw, 2vw, 2vw, 1.2vw);
+    span{
+        @include respectFont(2vw, 2vw, 2vw, 2vw, 1.5vw);
+        color:rgb(80, 80, 252);
+        text-decoration: underline;
+        &:hover{
+            cursor: pointer;
+            color:green;
+        }
+    }
+}
+
+button{
+    border:none;
+    color:#f9f9f9;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 3px 3px 3px #141414d2,  -1px -1px 1px grey;
+    -webkit-box-shadow: 3px 3px 3px #141414d2,  -1px -1px 1px grey;
+    -moz-box-shadow: 3px 3px 3px #141414d2,  -1px -1px 1px grey;
+   
+    &:focus{
+        -webkit-box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+        -moz-box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+        box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+    }
+
+}
+

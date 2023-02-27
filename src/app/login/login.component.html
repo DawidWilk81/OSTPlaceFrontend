@@ -1,0 +1,28 @@
+<div class="container-fluid m-0 p-0" id="whole">
+  <div id="brand" routerLink=""><span style='color: #143E00'>OST</span>Place</div>
+      <div id="loginForm" class="row p-0 m-0 ">
+
+          <!-- FORM START -->
+          <!-- <div class="conic">1</div> -->
+          <!-- <div class="conic2">1</div> -->
+          <form #heroForm = "ngForm" (ngSubmit)="loginUser()">
+              <div class="form-group">
+                <label for="loginInput" >Login</label>
+                <input type="text" minlength='3' maxlength='16' [(ngModel)]="userInfo.username" #name="ngModel" [ngClass]="{'invalidInput': username.invalid && username.touched}" name="username" #username="ngModel" required  class="form-control text-center" id="loginInput" aria-describedby="loginHelp" placeholder="Enter login">
+                <small *ngIf="username.touched && username.invalid" style="color:rgba(255, 0, 0, 0.726)"><br> Provided login is invalid</small>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" minlength='6' maxlength='30' [ngClass]="{'invalidInput': password.invalid && password.touched}"class="form-control text-center" id=" password" [(ngModel)]="userInfo.password" name="password" #password="ngModel" required id="InputPassword" placeholder="Enter password">
+                <small *ngIf="password.touched && password.invalid"  style="color:rgba(255, 0, 0, 0.726)">Provided password is invalid</small>
+              </div>
+              <button type="submit" class="btn btn-primary mt-2" [disabled]="!heroForm.valid" (click)="loginUser">
+               <span>Submit</span>
+              </button>
+              <p>Got no account? <span (click)="goRegister()">Register</span></p>
+              <!-- <div id="error" class="mt-3">123</div> -->
+              <span *ngIf="(username.invalid || password.invalid || errorLogin == true) && heroForm.submitted " style="color:rgb(194, 10, 10)">Login or password is incorrect</span>
+          </form>
+
+      </div>
+</div>

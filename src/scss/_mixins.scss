@@ -1,0 +1,49 @@
+@mixin WbodyBuilder($w, $h){
+    width:$w;
+    height:$h;
+}
+
+@mixin respectFont($mobile, $smart, $tablet, $smDisplay, $lgDisp){
+    @media only screen and(min-width:0){
+        font-size: $mobile;
+    }
+    @media only screen and(min-width:360px){
+        font-size: $smart;
+    }
+    @media only screen and(min-width:760px){
+        font-size: $tablet;
+    }
+    @media only screen and(min-width:960px){
+        font-size:$smDisplay;
+    }
+    @media only screen and(min-width:1300px){
+        font-size:$lgDisp;
+    }
+}
+
+@mixin respectImg($mobile, $smart, $tablet, $smDisplay, $lgDisp, $XLDisp){
+    @media only screen and(min-width:0){
+        width: $mobile;
+        height: $mobile;
+    }
+    @media only screen and(min-width:360px){
+        width: $smart;
+        height: $smart;
+    }
+    @media only screen and(min-width:760px){
+        width: $tablet;
+        height: $tablet;
+    }
+    @media only screen and(min-width:960px){
+        width: $smDisplay;
+        height: $smDisplay;
+    }
+    @media only screen and(min-width:1300px){
+        width:  $lgDisp;
+        height:  $lgDisp;
+    }
+    @media only screen and(min-width:1760px){
+        width:  $XLDisp;
+        height:  $XLDisp;
+    }
+}

@@ -1,0 +1,189 @@
+<div class='container-fluid p-0 m-0' id="whole">
+<!-- ALERTS -->
+  <div class="alertInfo alert-info" *ngIf="alreadyInBasket" role="alert">
+    <fa-icon [icon]="xSign" (click)="hideAlready()"></fa-icon>
+        Item is already in your basket or you got 5(MAX) products right there.
+    </div>
+
+    <div class="alertNEXT alert-success" *ngIf="addedOST" role="alert">
+      <fa-icon [icon]="xSign" (click)="addedBasketInfo()"></fa-icon>
+          Added into your basket
+    </div>
+
+<!-- MUSIC PLAYER -->
+    <div id="musicPlayer" #musicPlayer>
+      <p #title></p>
+      <audio controls id="audioBox" #audioBox [hidden]="!isPlaying">
+        <source type="audio/mpeg" id='audio' #audio/>
+        <source type="audio/wav" id='audioWav' #audio/>
+      </audio>
+    </div>
+
+    <div *ngIf='clickedOST' id="checkInfo" class="p-0 m-0">
+      <div class="row m-0 p-0 w-100 h-100">
+        <div class="col-12" id="OSTImage">
+          <div id="avatar">
+                <img [src]='userAccount.avatar' alt='author avatar'/>
+          </div>
+          <div id="price">
+            <b>$600</b>
+          </div>
+          <img [src]='OSTChecking.cover' alt='OSTimage'/>
+        </div>
+        <div class="col-12 p-0 m-0" id="OSTInfo">
+          <div class="row w-100 h-100 p-0 m-0 ">
+
+            <div class="col-12 text-center" id="title" ><b>{{OSTChecking.title}}</b></div>
+            <div class="col-12" id="tags" class="m-0 p-0">
+              <ul id="tagsUL" class="m-0 p-0">
+                <li *ngFor="let x of OSTChecking.tags" class="my-auto" >{{tagList[x-1].name}}</li>
+              </ul>
+            </div>
+            <div class="col-12 p-2" id="desc">
+              <p>{{OSTChecking.desc}}</p>
+              <span id="date" class="text-right">
+                  Added: {{OSTChecking.date|date}} <br> by: <b id="username">{{userAccount.user}}</b>
+              </span>
+            </div>
+
+            <div class="col-12" id="OSTButtons">
+              <button class="btn btn-primary w-25" [disabled]="username == OSTChecking.author" (click)="addToBasket()">Add to basket</button>
+              <button class="btn btn-danger w-25 ml-auto" (click)="exitOST()">exit</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEARCH TAB -->
+    <div id="search" *ngIf="showSearch">
+
+      <form class="p-2">
+        <div class="xSign"><fa-icon [icon]='xSign' (click)="exitSearch()"></fa-icon></div>
+        
+        <div class="form-group">
+          <b>Title</b>
+          <input type="text" class="form-control" id="titleInput" aria-describedby="searchByTitle" placeholder="Enter Title" name="title"  [(ngModel)]="searchOstsOptions.title">
+        </div>
+        <div class="form-group">
+          <div class="row w-100">
+            <div class="col-6 d-flex flex-column">
+              <b>Price from</b>
+              <input type="number" class="form-control" id="priceFrom" placeholder="Price" min="1" max="100000" #priceFrom [(ngModel)]="searchOstsOptions.priceFrom" name="priceFrom" (ngModelChange)="checkPriceFrom($event)">
+            </div>
+            <div class="col-6 d-flex flex-column" >
+              <b>Price to</b>
+              <input type="number" class="form-control" id="priceTo" placeholder="2" min="2" max="100000" #priceTo [(ngModel)]="searchOstsOptions.priceTo" name="priceTo" (ngModelChange)="checkPriceTo($event)">
+            </div>
+          </div>
+        </div>
+
+        <b class="ml-3">Tags</b>
+        <div class="form-group" id="tagsSearch">
+          <ul id="tagsUl" class="m-0 p-2">
+            <li *ngFor="let tag of tagList" (click)="clickTag(tag['id']-1)">{{tag['name']}}</li>
+          </ul>
+        </div>
+        <b>Choosed Tags</b>
+        <div class="form-group" id="choosedTags">
+          <ul id="ChoosedtagsUl" class="m-0 p-2">
+            <li *ngFor="let tag of choosedTags; index as i" class="m-1" (click)="clickChoosedTag_Search(i)">{{tag}}</li>
+          </ul>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-75" (click)="searchOSTS()" >Search</button>
+        <button type="submit" class="btn btn-primary w-25" (click)="cleanOutSearch()">
+          <fa-icon [icon]="broom"></fa-icon>CLEAN OUT 
+        </button>
+        <b *ngIf="searchRN">Found {{collectionSize}} items!</b>
+      </form>
+    </div>
+<!-- Search TAB END -->
+    <div class="row m-0 p-0" id="unloggedRow">
+      <!-- NAVIGATION -->
+
+    <div class="p-0 col-2 col-sm-2 col-md-3 col-lg-2 col-xl-1 px-0 " id="sideBarContainer">
+      <app-navigation (username)="childUsername($event)"></app-navigation>
+    </div>
+      <!-- CONTENT WITH MUSIC -->
+      <div class=" p-0 col-10 col-sm-10 col-md-9 col-lg-10 col-xl-11 " id="contentContainer">
+          <!-- CONTENT PAGE -->
+          <div class="col-12 p-0" id="ContentPage">
+            <!-- Search BOX -->
+            <div class="col-12 p-0 sticky-top" id="topTab">
+              <div class="row m-0 p-0">
+                <div class="col-12 p-0" id="tagsBox">
+                  <div id="pickedTags">
+                    <ul class="p-1">
+                      <span style="letter-spacing:0.05vw;"><p class="p-0 m-0">Picked Tags</p></span>
+                      <li *ngFor="let x of pickedTags; index as i" (click)="clickChoosedTag(i)">{{pickedTags[i]}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- MUSIC Container -->
+            <div class="col-12 p-2"  id="musicBox">
+                <!-- OSTS BOXES LOOP -->
+                <div class="row p-0 m-0 d-flex justify-content-start align-items-start">
+                  <!-- FILTER OST BY SEARCH -->
+                <div id="searchTab" class="col-12 m-0 p-0">
+                  <div id="magnify" class="d-flex align-items-center" (click)="exitSearch()" [ngClass]="showSearch == true ? 'searchClicked' : 'searchNotClicked'">
+                    <div id="icon" [ngClass]="{'iconClicked': showSearch === true}">
+                      <fa-icon [icon]="fGlass" ></fa-icon>
+                    </div>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle ml-2" (change)="getSortValue($event)" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sort By: {{sortBy}}
+                    </button>
+                    <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton">
+                      <li class="dropdown-item" (click)="getSortValue($event)"> Price Desc </li>
+                      <li class="dropdown-item" (click)="getSortValue($event)"> Price Asc </li>
+                      <li class="dropdown-item" (click)="getSortValue($event)"> Date: older first </li>
+                      <li class="dropdown-item" (click)="getSortValue($event)"> Date: newer first </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- END OF SEARCH TAB -->
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-3  songContainer  " *ngFor='let x of songs; index as i' >
+                    <div class="col-12 OSTImage p-0" (click)="playAudio(x.ost, x.title)">
+                      <div id="price">
+                        <b>{{x.price| currency}}</b>
+                      </div>
+                      <fa-icon [icon]="playHover"></fa-icon>
+                      <img [src]="x.cover" alt="ostImage"/>
+                    </div>
+                    <div class="col-12 OSTInfo p-0">
+                      <div class="row m-0 p-0">
+                        <div class="col-12 title d-flex justify-content-center align-items-center">{{x.title}}</div>
+                        <div class="col-12 tags p-0 ">
+                          <ul class="d-flex justify-content-center align-items-center">
+                            <li *ngFor="let tag of x.tags" (click)="clickOstTag(tag)">{{tags[tag-1].name}}</li>
+                          </ul>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center align-content-center OSTButtons">
+                            <button class="btn btn-primary" (click)="checkOST(x.id, x.author)">Check OST</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- PAGINATION BAR -->
+                <div class="col-12" id="paginationBar">
+                  <ngb-pagination class="paginationBar d-flex justify-content-center align-items-center mt-5"
+                  [collectionSize]="collectionSize"
+                  [(page)]="pageNum"
+                  [pageSize]=3
+                  (pageChange)="changePage($event)"
+                  ></ngb-pagination>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+  </div>

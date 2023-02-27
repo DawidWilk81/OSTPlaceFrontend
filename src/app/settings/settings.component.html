@@ -1,0 +1,93 @@
+<div class="container-fluid m-0 p-0" id="settingsWhole">
+  <div class="alert alert-success" *ngIf="alertSuccess" role="alert">
+    <fa-icon [icon]="xSign" (click)="hideAlert()"></fa-icon>
+    Avatar has been changed.
+  </div>
+    <div class="row m-0">
+        <div id="checkValues">
+          <!-- AVATAR CHECKS -->
+          <b *ngIf='avatarTypeError'>
+            <span style="color:red;margin-right: 10px;">
+              <fa-icon  [icon]='xMark'></fa-icon></span>Only *jpg or *png
+            </b>
+
+          <b *ngIf='avatarSizeError'>
+            <span style="color:red;margin-right: 10px;">
+            <fa-icon [icon]='xMark' > </fa-icon></span>Max File width is 2000px height and 3000px width 
+            <b><span style="text-decoration:underline"> <br/>MY AVATAR SIZE IS: {{imgWidth}} x {{imgHeight}}</span></b>
+          </b>  
+            
+            <b *ngIf='avatarWeightError'>
+              <span style="color:red;margin-right: 10px;">
+              <fa-icon [icon]='xMark'></fa-icon></span>Max File size is 10mb 
+            </b>    
+
+        </div>
+        <div class="col-2 col-sm-2 col-md-3 col-lg-2 col-xl-1" id="sideBarContainer">
+            <app-navigation></app-navigation>
+        </div>
+        <div class="col-10 col-sm-10 col-md-9 col-lg-10 col-xl-11 p-0" id="settingsContainer">
+          
+            <div id="settings" class="pt-2 px-lg-3">
+                  <div class=" mx-auto d-flex flex-column justify-content-center align-items-center" id="avatar">
+                    <form  #avatar = "ngForm" #addSongForm (ngSubmit)="changeAvatar()" class="h-100">
+                      <div id="avatarCircle" #avatarCircle>
+                        <span [hidden]='avatar.valid && !showMark' style="color:rgb(199, 0, 0);font-size:1.5vw" id="avatarXmark"><fa-icon [icon]="xMark"></fa-icon></span>
+                        <img [src]="imgUrl" alt='404 IMG' *ngIf='imgUrl' [ngClass]="{'invalidFile': avatarSizeError}"/>
+                        <img [src]="userAccount.avatar" alt='404 IMG' *ngIf='!imgUrl' [ngClass]="{'invalidFile': avatarSizeError}"/>
+                      </div>
+
+                      <label for="avatarSendButton" class="text-center m-0">Choose new avatar</label>
+                      <input type="file" alt='Change avatar' hidden id='avatarSendButton' (change)="onAvatarChange($event)" name='avatar'/>
+                      <button *ngIf="avatarAccept && imgWidth" [disabled]="disableButton" type="submit" class="btn btn-danger p-0 m-0" id="sendAvatar">Change Avatar</button>
+                    </form>
+                  </div>
+
+                <!-- change password/ email/ avatar/ opis? -->
+                <form class="p-1 pr-3 pt-lg-5" #UserPasswordForm = "ngForm" >
+
+                    <div class="form-group">
+                      <label for="InputPassowrd">Change Password</label><fa-icon class="ml-3" [icon]="change" (click)='showPassword()'></fa-icon>
+                      <input id="oldPassword" [disabled]='!changePassword' class="form-control InputPassword mb-1" type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" name='oldPassword'  ngModel #oldPassword="ngModel"  placeholder="My old Password" required min="6" max="30" [(ngModel)]="userInfo.oldPassword">
+                      <span style="color:rgb(202, 0, 0)" class='ml-4 badPassword' *ngIf="!validPassword"><b>Provided password is incorrect or new password is the same as the old one</b></span>
+                    </div>
+                    
+
+                    <div class="form-group" *ngIf="changePassword">
+                      <label  for="InputPassowrd">New password</label>
+                      <input type="password"  name='newPassword'  id='newPassword' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" ngModel #newPassword="ngModel" required class="form-control InputPassword" placeholder="My new password"  required minlength="6" maxlength="30" [(ngModel)]="userInfo.newPassword">
+                      
+                      <div  id="passwordCheck">
+                        <ul class="p-3 p-md-3 ml-lg-3 px-lg-5 ">
+
+                          <li [hidden]="newPassword.valid" *ngIf="userInfo.newPassword.length < 6 || userInfo.newPassword.length > 30 "><span style="color:red">
+                            Length must be between 6 and 30 characters
+                          </span></li>
+
+                          <li [hidden]="newPassword.valid && newPassword.touched"><span style="color:red"> 
+                            One capital letter and number
+                          </span></li>
+
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="form-group" *ngIf="changePassword">
+                      <label for="InputPassowrd">Confirm password</label>
+                      <input type="password" [ngClass]="{'invalidInput': confirmPassword.value != userInfo.newPassword  && confirmPassword.dirty, 'validInput': confirmPassword.value == userInfo.newPassword}" ngModel id='confirmPassword' name='confirmPassword' #confirmPassword="ngModel" class="form-control InputPassword" placeholder="Confirm password"  required minlength="6" maxlength="20" [(ngModel)]="checkPassword">
+                    </div>
+
+                    <button type='button'*ngIf="changePassword" (click)="updatePassword()" class="btn btn-primary" id="submitButton"  [disabled]="!UserPasswordForm.valid || (userInfo.newPassword != checkPassword)" >Submit</button>
+                  </form>
+                  <!-- CHANGE EMAIL FORM -->
+                  <form class="p-1 pr-3" #UserEmail #UserEmailForm = "ngForm" (ngSubmit)="changeAvatar()">
+                    <div class="form-group">
+                      <label for="emailInput">Change Email</label><fa-icon class="ml-2" [icon]="change" (click)='showEmail()'></fa-icon><br>
+                      <input  [disabled]='!changeEmail' pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z-.]+.[a-zA-Z0-9-.]$" type="email" name="email" ngModel #email="ngModel" required class="form-control text-center"  id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Email" [(ngModel)]="newEmail">
+                      <button type="button"  *ngIf='changeEmail' class="btn btn-primary" id="resetEmail" [disabled]="!UserEmailForm.valid"  (click)='sendchangeEmail()' [disabled]="!email.valid">Change my email address</button>
+                    </div>
+                  </form>
+           </div>
+        </div>
+    </div>
+</div>
