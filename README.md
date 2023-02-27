@@ -1,27 +1,26 @@
 # Ostplace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
-
 ## Development server
+Run `npm i` to recover node_modules then run `ng serve` for a dev server, at the end navigate to `http://localhost:4200/` in your browser.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# PROJECT OVERVIEW FROM CREATOR:
+Firstly User will se unlogged page, where he can listen to exemplary 3 OSTS or navigate to login component.
+<img src='www/unlogged.png' alt='unloggedSitePNG'/>
 
-## Code scaffolding
+### At login component user can log into if he got active account
+<img src='www/login.png' alt='unloggedSitePNG'/>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### or create new account with email confirmation.
+<img src='www/register.png' alt='unloggedSitePNG'/>
+<img src='www/confirmEmailPNG.png' alt='unloggedSitePNG'/>
+<img src='www/confirmEmailDetails.png' alt='unloggedSitePNG'/>
 
-## Build
+### After that user can login correctly into site for logged users.
+<img src='www/loggedHomePage.png' alt='unloggedSitePNG'/>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### On OST place user can add his song for real money.
+<img src='www/AddOst.png' alt='unloggedSitePNG'/>
 
-## Running unit tests
+### Modify his added content in MyOsts component
+<img src='www/My Osts.png' alt='unloggedSitePNG'/>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
