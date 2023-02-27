@@ -17,7 +17,8 @@ Firstly User will se unlogged page, where he can listen to exemplary 3 OSTS or n
 
 ### After that user can login correctly into site for logged users.
 <img src='www/loggedHomePage.png' alt='loggedHomePage'/>
-### User can sort by searchTab and by simple click on tag in OST.
+
+## User can sort by searchTab and by simple click on tag in OST.
 SearchTAB
 <img src='www/mainPageSearch.png' alt='loggedHomePage'/>
 Tag click
@@ -32,7 +33,12 @@ Tag click
 ### Change his user account.
 <img src='www/settings.png' alt='settings'/>
 
-### And ofcourse buy OSTS. On example images "testUser103" has been added a song, so "testUser101" might be able to buy it.
+### And ofcourse buy OSTS. On example images "testUser103" has been added a song, so "testUser102" might be able to buy it by clicking "check OST" and "add to basket" button.
+<img src='www/checkOSTnewUser.png' alt='checkOSTnewUser'/>
+
+### in basket he will see added items
+<img src='www/basket.png' alt='settings'/>
+
 
 
 
