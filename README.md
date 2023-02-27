@@ -17,6 +17,11 @@ Firstly User will se unlogged page, where he can listen to exemplary 3 OSTS or n
 
 ### After that user can login correctly into site for logged users.
 <img src='www/loggedHomePage.png' alt='loggedHomePage'/>
+### User can sort by searchTab and by simple click on tag in OST.
+SearchTAB
+<img src='www/mainPageSearch.png' alt='loggedHomePage'/>
+Tag click
+<img src='www/loggedPageSearchTag.png' alt='loggedHomePage'/>
 
 ### On OST place user can add his song for real money.
 <img src='www/AddOst.png' alt='AddOst'/>
@@ -28,3 +33,6 @@ Firstly User will se unlogged page, where he can listen to exemplary 3 OSTS or n
 <img src='www/settings.png' alt='settings'/>
 
 ### And ofcourse buy OSTS. On example images "testUser103" has been added a song, so "testUser101" might be able to buy it.
+
+
+
