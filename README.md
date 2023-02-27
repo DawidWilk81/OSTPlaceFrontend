@@ -36,9 +36,35 @@ Tag click
 ### And ofcourse buy OSTS. On example images "testUser103" has been added a song, so "testUser102" might be able to buy it by clicking "check OST" and "add to basket" button.
 <img src='www/checkOSTnewUser.png' alt='checkOSTnewUser'/>
 
-### in basket he will see added items
-<img src='www/basket.png' alt='settings'/>
+### in basket user will see added items that he is going to buy or remove from basket.
+<img src='www/basketDelete.png' alt='removeItemBasket'/>
 
+### If user decide to buy items from basket he will be moved to payment gateway where he can insert credit card informations. To show how it works firstly i'm going to log into "stripe" from CMD to get access.
+<img src='www/stripeAccessGranted.png' alt='stripeAccessGranted'/>
 
+### Now i can listen to stripe payment
+<img src='www/stripe listen.png' alt='stripeListen'/>
 
+### when user will provide credit card details where he got enough balance, he will got basket removed and bought items will be added into his account. Meanwhile person who sold it will get money minus my and stripe percents.
 
+### card details insert.
+<img src='www/stripeBuy.png' alt='stripeBuy'/>
+
+### payment status
+user
+<img src='www/completeBuy.png' alt='completeBuy'/>
+
+stripe
+<img src='www/stripeCLISuccess.png' alt='stripeCLISuccess'/>
+
+### After payment basket
+customer basket
+<img src='www/bought and got.png' alt='bought and got'/>
+
+seller basket
+<img src='www/SOLDandGOTNOT.png' alt='SOLDandGOTNOT'/>
+
+## stripe customer balance after he sold item
+<img src='www/stripeAccountMoney.png' alt='stripeAccountMoney'/>
+
+# And thats how it works at the moment.
