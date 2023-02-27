@@ -104,10 +104,26 @@
 }
 
 .invalidInput{
-    border:3px solid rgba(255, 0, 0, 0.788);
+    border-bottom:3px solid rgba(255, 0, 0, 0.788);
 }
 .red{color:red}
 
 fa-icon{
     color:rgb(2, 155, 2);
+}
+
+.login_P{
+    text-align:center;
+    margin:5px auto;
+
+    @include respectFont(4vw, 3vw, 2vw, 1.5vw, 1.3vw);
+    .login_span{
+        color:rgb(80, 80, 252);
+
+        &:hover{
+            cursor: pointer;
+            color:green;
+            text-decoration: underline;
+        }
+    }
 }

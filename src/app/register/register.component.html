@@ -43,6 +43,7 @@
                 
                 <button type="submit" class="btn btn-primary mt-2" [disabled]="!registerForm.valid || (password.value != password2.value)" >Submit</button>
             </form>
+            <p class="login_P">Got an account? <span class='login_span' (click)="goLogin()">Login</span></p>
         </div>
   </div>
   

@@ -56,7 +56,9 @@ export class RegisterComponent implements OnInit {
       }
    }
   }
-
+  goLogin(){
+    this._router.navigateByUrl('login');
+  }
   validateEmail(ev:any){
     // CHECK EMAIL PATTERN 
     console.log(ev.target.pattern);
@@ -93,9 +95,9 @@ export class RegisterComponent implements OnInit {
   registerUser(){
     
     return this._US.register(this.userInfo).subscribe(
-
       Response =>{
         alert('User registered correctly');
+        console.log(Response);
         this._router.navigateByUrl('');
       }, error =>{
         console.log(error);
