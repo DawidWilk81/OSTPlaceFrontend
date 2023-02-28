@@ -3,7 +3,8 @@
 @import '../../scss/_placeholders.scss';
 @import '../../scss/_mixins.scss';
 b{
-    font-family: 'Cinzel', serif;
+    font-family: 'Caudex', serif;
+    padding:5px
 }
 #whole{
     min-height: 250vh;
@@ -92,7 +93,6 @@ b{
                 h1{
                     text-align: center;
                     @include respectFont(5vw, 5vw, 6vw, 5vw, 3vw);
-                    font-size: 3vw;
                 }
                 .btn{
                     border-radius: 50px;
@@ -178,7 +178,7 @@ b{
                             }
     
                             .musicInfo{
-                                height: 80%;
+                                height: 100%;
                                 .price{
                                         @include respectFont(4vw, 3.4vw, 2vw, 2vw, 1.5vw);
                                 }
@@ -192,18 +192,9 @@ b{
                                         font-size: 1vw;
                                     }
                                 }
-                                .desc{
-                                    padding-top:10px;
-                                    overflow-x:hidden;
-                                    height: 55%;
-                                    line-height: 95%;
-                                    @include respectFont(2vw, 3vw, 1.5vw, 0.8vw, 1vw);
-                                    @media only screen and(min-width:2500px){
-                                        font-size: 0.5vw;;
-                                    }
-                                }
+                                
                                 .info{
-                                    height: 20%;
+                                    height: 50%;
                                     z-index: 20;
                                     margin:0;
                                     padding:0;   
@@ -212,7 +203,7 @@ b{
                                         margin:0;
                                         padding:0;
                                         .author{
-                                            @include respectFont(3.5vw, 2.5vw, 1.4vw, 1.2vw, 0.7vw);
+                                            @include respectFont(3.5vw, 2.5vw, 1.4vw, 1.2vw, 0.8vw);
                                         }
     
                                         .buy{

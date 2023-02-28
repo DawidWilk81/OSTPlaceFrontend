@@ -17,10 +17,10 @@
         top:0;
         left:10px;
         @media only screen  and (min-width:0){
-            font-size: 6vw;
+            font-size: 8vw;
         }
         @media only screen  and (min-width:360px){
-            font-size: 4vw;
+            font-size: 6vw;
         }
         @media only screen  and (min-width:760px){
             font-size: 4vw;
@@ -32,7 +32,7 @@
     }
 
     #loginForm{
-        width: 30%;
+        width: 40%;
         height: auto;
         min-width: 150px;
         position: relative;
@@ -40,23 +40,15 @@
         min-width: 150px;
         border-radius: 16px;
         overflow:hidden;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2.1px);
+        -webkit-backdrop-filter: blur(2.1px);
+        border: 1px solid rgba(29, 31, 31, 0.3);
         // background: rgb(19,19,19);
         // background: -moz-linear-gradient(139deg, rgba(19,19,19,1) 0%, rgba(20,20,20,1) 51%, rgba(23,23,23,0.9471989479385504) 100%);
         // background: -webkit-linear-gradient(139deg, rgba(19,19,19,1) 0%, rgba(20,20,20,1) 51%, rgba(23,23,23,0.9471989479385504) 100%);
         // background: linear-gradient(139deg, rgba(19,19,19,1) 0%, rgba(20,20,20,1) 51%, rgba(23,23,23,0.9471989479385504) 100%);
         
-        @media only screen  and (min-width:0){
-            width: 50%;
-            height: 45%;
-        }
-        @media only screen  and (min-width:760px){
-            width: 40%;
-            height: 45%;
-        }
-        @media only screen  and (min-width:1240px){
-            width: 30%;
-            height: 50%;
-        }
 
         .conic{
             width: 200%;
@@ -82,7 +74,7 @@
         }
         form{
             width: 100%;
-            height: 97%;
+            height: auto;
             margin:0 auto;
             display:flex;
             margin:5px;
@@ -128,10 +120,10 @@
             }
         }
         label{
-            @include respectFont(3vw, 3vw, 2vw, 1.5vw, 1.3vw);
+            @include respectFont(4vw, 4vw, 2vw, 1.5vw, 1.3vw);
         }
         small{
-             @include respectFont(3vw, 2vw, 1.5vw, 1vw, 0.9vw);
+             @include respectFont(4vw, 3vw, 1.5vw, 1vw, 0.9vw);
         }
     }
 }
@@ -149,9 +141,9 @@
 p{
     text-align: center;
     color: #f0f0f0f9;
-    @include respectFont(2vw, 2vw, 2vw, 2vw, 1.2vw);
+    @include respectFont(4vw, 4vw, 2vw, 2vw, 1.2vw);
     span{
-        @include respectFont(2vw, 2vw, 2vw, 2vw, 1.5vw);
+        @include respectFont(5vw, 4vw, 2vw, 2vw, 1.5vw);
         color:rgb(80, 80, 252);
         text-decoration: underline;
         &:hover{
@@ -179,4 +171,3 @@ button{
     }
 
 }
-

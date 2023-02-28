@@ -20,7 +20,7 @@
         <div class="col-12 p-0" id="heroPage">
           <div class="col-12 col-md-6 m-0 p-0" id="heroInfo">
             <h1>Revive your project with original soundtrack</h1>
-            <button class="btn btn-success">Catalog</button>
+            <button class="btn btn-success">Get started</button>
           </div>
         </div>
         <!-- CONTENT PAGE -->
@@ -41,10 +41,9 @@
                       <div class="col-8 musicInfo p-0">
                         <div class="col-12 price d-flex justify-content-end align-content-center">{{x.price}} $</div>
                         <div class="col-12 title"><b>{{x.title}}</b></div>
-                        <div class="col-12 desc"><p>{{x.desc}}</p><i></i></div>
-                        <div class="col-12 info">
+                        <div class="col-12 info mt-5">
                           <div class="row">
-                            <div class="col-10 author mt-1"><b>Made by: {{x.author}}</b></div>
+                            <div class="col-10 author d-flex justify-content-start align-items-end"><b>Made by: {{x.author}}</b></div>
                             <div class="col-2 buy p-0 mt-2" (click)="GoTologIn()"><fa-icon [icon]="cart"></fa-icon></div>
                           </div>
     

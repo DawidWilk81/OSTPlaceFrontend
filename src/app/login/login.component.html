@@ -3,11 +3,10 @@
       <div id="loginForm" class="row p-0 m-0 ">
 
           <!-- FORM START -->
-          <!-- <div class="conic">1</div> -->
-          <!-- <div class="conic2">1</div> -->
           <form #heroForm = "ngForm" (ngSubmit)="loginUser()">
+              <h2 class="text-center"><b>Log in</b></h2>
               <div class="form-group">
-                <label for="loginInput" >Login</label>
+                <label for="loginInput" >Username</label>
                 <input type="text" minlength='3' maxlength='16' [(ngModel)]="userInfo.username" #name="ngModel" [ngClass]="{'invalidInput': username.invalid && username.touched}" name="username" #username="ngModel" required  class="form-control text-center" id="loginInput" aria-describedby="loginHelp" placeholder="Enter login">
                 <small *ngIf="username.touched && username.invalid" style="color:rgba(255, 0, 0, 0.726)"><br> Provided login is invalid</small>
               </div>

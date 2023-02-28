@@ -80,14 +80,16 @@
           </div>
         </div>
 
-        <b class="ml-3">Tags</b>
+
         <div class="form-group" id="tagsSearch">
+          <b class="">Tags</b>
           <ul id="tagsUl" class="m-0 p-2">
             <li *ngFor="let tag of tagList" (click)="clickTag(tag['id']-1)">{{tag['name']}}</li>
           </ul>
         </div>
-        <b>Choosed Tags</b>
+
         <div class="form-group" id="choosedTags">
+          <b class="ml-3">Choosed Tags</b>
           <ul id="ChoosedtagsUl" class="m-0 p-2">
             <li *ngFor="let tag of choosedTags; index as i" class="m-1" (click)="clickChoosedTag_Search(i)">{{tag}}</li>
           </ul>
@@ -134,6 +136,7 @@
                     <div id="icon" [ngClass]="{'iconClicked': showSearch === true}">
                       <fa-icon [icon]="fGlass" ></fa-icon>
                     </div>
+                    
                   </div>
 
                   <div class="dropdown">
@@ -151,7 +154,7 @@
                 <!-- END OF SEARCH TAB -->
                 <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-3  songContainer  " *ngFor='let x of songs; index as i' >
                     <div class="col-12 OSTImage p-0" (click)="playAudio(x.ost, x.title)">
-                      <div id="price">
+                      <div id="price" class="d-flex justify-content-center align-items-center ">
                         <b>{{x.price| currency}}</b>
                       </div>
                       <fa-icon [icon]="playHover"></fa-icon>

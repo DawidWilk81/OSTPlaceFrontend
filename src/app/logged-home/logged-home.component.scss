@@ -3,10 +3,7 @@
 @import '../../scss/_placeholders.scss';
 @import '../../scss/_mixins.scss';
 
-b{
-    font-family: 'Imbue' sans;
-    @include respectFont(4vw, 3vw, 3vw, 2vw, 1.8vw);
-}
+
 #whole{
     height: $pageHeight;
     background: rgb(0,0,0);
@@ -34,6 +31,7 @@ b{
         -moz-box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
         box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
         z-index: 200001;
+
         @include respectFont(1.5vw, 1.5vw, 2vw, 1.8vw, 1.4vw);
         @media only screen and(max-width:360px){
             right: 2%;
@@ -82,6 +80,9 @@ b{
             .form-group{
                 width: 100%;
                 // height: 20%;
+                b{
+                    @include respectFont(3.5vw, 3vw, 2vw, 2vw, 1.4vw);
+                }
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -381,7 +382,10 @@ b{
 
         #ContentPage{
             height: 250vh;
-            
+            b{
+                font-family: 'Caudex', serif;
+                @include respectFont(4vw, 3vw, 3vw, 2vw, 1.8vw);
+            }
                 #topTab{
                     background-color: #1a1818f1;
                     height: auto;
@@ -431,6 +435,9 @@ b{
                     #searchTab{
                         height: 30px;   
                         transition: 0.8s;
+                        b{
+                            @include respectFont(3.5vw, 3vw, 2vw, 2vw, 1.4vw);
+                        }
                         #magnify{
                             position: absolute;
                             right:0px;
@@ -441,7 +448,7 @@ b{
                             margin-right: 15px;
                             @media only screen and(max-width:512px) {
                                 border:none;
-                                background-color: #f9f9f900;
+                                padding: 10px;
                             }
 
                             &:hover{
@@ -522,17 +529,21 @@ b{
                                 border-radius: 20px;
                                 #price{
                                     position: absolute;
-                                    right:30px;
+                                    right:10px;
                                     top:10px;
                                     width: auto;
                                     height: auto;
-                                    padding-left:10px;
-                                    padding-right:10px;
+                                    padding-left:5px;
+                                    padding-right:5px;
                                     color: #1ba500;
-                                    background-color: #dddddde8;
-                                    border:2px solid #0303039f;
+                                    background-color: rgba(228, 228, 228, 0.86);
+                                    border:2px solid #03030373;
                                     border-radius:30px;
-                                    @include respectFont(5vw, 4vw, 3vw, 2vw, 1.3vw);
+                                    
+                                    b{
+
+                                        @include respectFont(5vw, 4vw, 3vw, 2vw, 1.1vw);
+                                    }
                                 }
                                 img{
                                     @extend %MaxSize;
@@ -704,6 +715,7 @@ ngb-pagination ::ng-deep ul{
 
 .iconClicked{
     margin-left:auto !important;
-    background-color: #f9f9f9 !important;
-    color:#030303;
+    // background-color: #f9f9f9 !important;
+    padding:10px;
+    color:green;
 }

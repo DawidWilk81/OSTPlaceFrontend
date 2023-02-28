@@ -87,10 +87,12 @@
 %PaginationStyle{
     .page-link{
         margin:0 0 0 3px !important;
+        padding:8px 12px !important;
+        border-radius: 15px !important;
     }
-    .page-link:focus {
-        box-shadow: none;
-    }
+    // .page-link:focus {
+    //     box-shadow: none;
+    // }
     li:not(.active) > a {
         background-color: #0303032a !important;
         border:1px solid #0303035d !important;
