@@ -39,7 +39,7 @@
 
                       <label for="avatarSendButton" class="text-center m-0">Choose new avatar</label>
                       <input type="file" alt='Change avatar' hidden id='avatarSendButton' (change)="onAvatarChange($event)" name='avatar'/>
-                      <button *ngIf="avatarAccept && imgWidth" [disabled]="disableButton" type="submit" class="btn btn-danger p-0 m-0" id="sendAvatar">Change Avatar</button>
+                      <button *ngIf="avatarAccept && imgWidth" [disabled]="disableButton" type="submit" class="btn btn-danger m-0" id="sendAvatar">Change Avatar</button>
                     </form>
                   </div>
 

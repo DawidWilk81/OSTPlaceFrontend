@@ -64,10 +64,13 @@
             #userAvatar_UserInfo{
                 padding: 10px;
                 height: 40%;
+                b{
+                    @include respectFont(8vw, 5vw, 2vw, 2vw, 1.2vw);
+                }
                 #username{
                     height: 45%;
                     text-align: center;
-                    @include respectFont(4vw, 3vw, 2vw, 2vw, 1.2vw);
+                    
 
                 }
                 #balanceInfo{
@@ -275,7 +278,6 @@
         background: -webkit-linear-gradient(173deg, rgba(3,3,3,0.5970588919161415) 0%, rgba(3,3,3,0.6726891440169818) 23%, rgba(3,3,3,1) 83%, rgba(0,0,0,1) 100%);
         background: linear-gradient(173deg, rgba(3,3,3,0.5970588919161415) 0%, rgba(3,3,3,0.6726891440169818) 23%, rgba(3,3,3,1) 83%, rgba(0,0,0,1) 100%);
         z-index: 2000;
-        
         #userInfo{
             width: 100%;
             height: 34%;    
@@ -292,12 +294,16 @@
     
                     img{
                         // 6 values
-                        @include respectImg(80%, 25vw, 10vw, 9vw, 8vw, 7vw);
+                        @include respectImg(80%, 20vw, 10vw, 13vw, 9vw, 7vw);
                         border-radius: 100px;
                         border:2.5px solid #000000af;
                         -webkit-box-shadow: 8px 8px 24px 0px rgba(3, 3, 3, 0.71);
                         -moz-box-shadow: 8px 8px 24px 0px rgba(3, 3, 3, 0.71);
                         box-shadow: 8px 8px 24px 0px rgba(3, 3, 3, 0.71);
+
+                        @media only screen and(max-height:500px) {
+                            @include respectImg(80%, 20vh, 10vh, 13vh, 9vh, 7vh);
+                        }
                     }
     
                 }
@@ -347,6 +353,7 @@
                 border-radius: 15px;
                 background-color: #222222b0;
                 line-height: 25px;
+                @include respectFont(2.5vw, 3vw, 2vw, 1.8vw, 1.1vw);
                 @media only screen and(max-height:500px) {
                     font-size: 3vw;
                     height: 20%;

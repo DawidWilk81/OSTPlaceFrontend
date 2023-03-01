@@ -15,13 +15,14 @@ export class BasketComponent implements OnInit {
   MyBasket:any;
   xSign = faX;
   tagList:any;
-
   //MUSIC PLAYER
   isPlaying = false;
   settedMusic:any = '';
   stripeAPIKey:any = 'pk_test_51Lxq1oEdKC3LJHX6jHCB4Z9rRbL4T2ZGe8OaKhgd60TGrdrJ1ea0YocFwQicoffZ5iLsyE6sya1892vh5monnsgY00n8fSXJM9';
   paymentHandler:any = null;
   stripe:any;
+  emptyBasket:boolean = false;
+
   constructor(
     private _OSTS:SongService
   ) { 
@@ -45,7 +46,9 @@ export class BasketComponent implements OnInit {
       }
     )
   }
-
+  emptyBasketAlert(){
+    this.emptyBasket = !this.emptyBasket;
+  }
   playAudio(audioSRC:any, titleOST:any){
     if(this.settedMusic == false){
       this.isPlaying = true;
@@ -71,16 +74,24 @@ export class BasketComponent implements OnInit {
   }
 
   async stripeCode(){
-    this.stripe = await loadStripe("pk_test_51Lxq1oEdKC3LJHX6jHCB4Z9rRbL4T2ZGe8OaKhgd60TGrdrJ1ea0YocFwQicoffZ5iLsyE6sya1892vh5monnsgY00n8fSXJM9");
-    var titles = this.MyBasket.map((x:any) => x.OST);
-    this._OSTS.checkOutSession(titles).subscribe(
-      Response =>{
-        // console.log(Response);
-        return this.stripe.redirectToCheckout({sessionId : String(Response)});
-      }, error =>{
-        console.log(error);
-      }
-    );;
+    console.log(this.MyBasket);
+    console.log(this.MyBasket.length);
+    if(this.MyBasket.length > 0){
+      this.stripe = await loadStripe("pk_test_51Lxq1oEdKC3LJHX6jHCB4Z9rRbL4T2ZGe8OaKhgd60TGrdrJ1ea0YocFwQicoffZ5iLsyE6sya1892vh5monnsgY00n8fSXJM9");
+      var titles = this.MyBasket.map((x:any) => x.OST);
+      this._OSTS.checkOutSession(titles).subscribe(
+        Response =>{
+          // console.log(Response);
+          return this.stripe.redirectToCheckout({sessionId : String(Response)});
+        }, error =>{
+          console.log(error);
+        }
+      );
+    }else{
+      this.emptyBasket = true;
+      console.log('EMPTY')
+    }
+    
   }
 
 

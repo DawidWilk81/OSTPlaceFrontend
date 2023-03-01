@@ -16,7 +16,7 @@ export class AddSongComponent implements OnInit {
   @ViewChild('ost') ost!:ElementRef;
   @ViewChild('priceInput', { static: false }) priceInput!:ElementRef;
 
-  searchTagsInputValue = ''
+  searchTagsInputValue = '';
   getTags = false;
   choosedTags:any = [];
   FilteredTags:any = [];
@@ -124,7 +124,7 @@ export class AddSongComponent implements OnInit {
   onImageChange(event:any){
     if(event.target.files[0].name.endsWith('.jpg') || event.target.files[0].name.endsWith('.png') ){
       let x = event.target.files[0];
-      console.log('xxx',x);
+      console.log('xValue:', x);
       let reader = new FileReader();
       reader.readAsDataURL(x);
       reader.onload=(event:any)=>{
@@ -195,7 +195,7 @@ export class AddSongComponent implements OnInit {
         Response =>{
           console.log(Response);
           this.alertSuccess = true;
-          console.log('Song has been added correctly into our database!')
+          console.log('Song has been added correctly into our database!');
           this._router.navigateByUrl('home');
         }, error =>{
           console.log(error);
@@ -215,10 +215,10 @@ export class AddSongComponent implements OnInit {
   checkPrice(evt:any){
     console.log('Price value', evt); 
     if(evt % 1 != 0){
-      console.log('NIE');
+      console.log('NO');
       this._renderer2.addClass(this.priceInput.nativeElement, 'invalidType');
     }else if(evt % 1 != 0 && evt <= 0){
-      console.log('TAK');
+      console.log('YES');
       this._renderer2.removeClass(this.priceInput.nativeElement, 'invalidType');
     }
   }

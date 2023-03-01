@@ -2,6 +2,7 @@
 @import '../../scss/_variables.scss';
 @import '../../scss/_placeholders.scss';
 @import '../../scss/_mixins.scss';
+@import '../../scss/_keyframes.scss';
 
 
 #whole{
@@ -15,8 +16,9 @@
 
     // SEARCH TAB OPTION
     #search{
-        width: 30%;
+        width: 40%;
         height:auto;
+        padding-bottom: 15px;
         position: fixed;
         top:10%;
         right:35%;
@@ -26,12 +28,13 @@
         z-index:20;
         background-color: $OSTClickedContainerColor;
         border-radius:15px;
-        border:1.5px solid #030303;
-        -webkit-box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
-        -moz-box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
-        box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+        border:1.5px solid #1d1d1d;
+        -webkit-box-shadow:  -14px 12px 10px -4px rgba(0, 0, 0, 0.55);
+        -moz-box-shadow:  -14px 12px 10px -4px rgba(0, 0, 0, 0.55);
+        box-shadow:  -14px 12px 10px -4px rgba(0, 0, 0, 0.55);
         z-index: 200001;
-
+        animation: showSearch 0.3s linear;
+        overflow-y: auto;
         @include respectFont(1.5vw, 1.5vw, 2vw, 1.8vw, 1.4vw);
         @media only screen and(max-width:360px){
             right: 2%;
@@ -41,12 +44,14 @@
             right: 15%;
             width: 50%;
         }
-        @media only screen and(max-height:512px) {
+        @media only screen and(max-height:500px) {
             width: 80%;
+            top:5%;
+            left:5%;
             height: 90vh;
-            top:0;
-            right: 0%;
+            padding-bottom:15px;
         }
+
         form{
             position: relative;
             button{
@@ -99,9 +104,9 @@
                     -webkit-box-shadow: 3px 3px 3px #141414d2,  -1px -1px 1px grey;
                     -moz-box-shadow: 3px 3px 3px #141414d2,  -1px -1px 1px grey;
                     &:focus{
-                        -webkit-box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
-                        -moz-box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
-                        box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+                        -webkit-box-shadow: inset -8px -6px 24px 0px rgba(9, 9, 9, 1);
+                        -moz-box-shadow: inset -8px -6px 24px 0px rgba(9, 9, 9, 1);
+                        box-shadow: inset -8px -6px 24px 0px rgba(9, 9, 9, 1);
                     }
                 }
                 #tagsUl{
@@ -210,6 +215,7 @@
                     @extend %MaxSize;
                     border-radius: 40px;
                     border:3px solid #03030383;
+                    
                 }
             }
             #price{
@@ -223,12 +229,14 @@
                 color: #1ba500;
                 background-color: #dddddde8;
                 border:2px solid #0303039f;
+                font-family: 'Playfair Display', serif;
                 border-radius:30px;
                 @include respectFont(5vw, 4vw, 3vw, 2vw, 1.3vw);
             }
             img{
                 @extend %MaxSize;
                 border-radius: 15px;
+                
             }
         }
         #OSTInfo{
@@ -458,7 +466,6 @@
                             #icon{
                                 margin-right: 10px;
                                 margin-left:5px;
-                                padding: 3px;
                                 border-radius: 50px;
                                 @extend %centerFlex;
                                 transition: 0.8s;
@@ -519,9 +526,11 @@
                     // songContainer contains song boxes values
                     .songContainer{
                         border-radius: 20px;
-                        height: 40vh;
+                        height: 50vh;
                         padding-left: 0;
-
+                        @media only screen and(max-height:500px) {
+                            height: 60vh;
+                        }
                             .OSTImage{
                                 width: 100%;
                                 height: 50%;
@@ -618,12 +627,12 @@
                                                 border-radius: 25px;
                                                 outline: none;
                                                 border:none;
-                                                background-color: #1b1b1bd2;
-                                                -webkit-box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
-                                                -moz-box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
-                                                box-shadow:  -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
+                                                -webkit-box-shadow: inset 5px 4px 3px -1px #4d4d4d65;
+                                                -moz-box-shadow: inset 5px 4px 3px -1px #4d4d4d65;
+                                                box-shadow: inset 5px 4px 3px -1px #4d4d4d65;
                                                 @include respectFont(4vw, 3vw, 2vw, 1.4vw, 0.8vw);
                                                 letter-spacing: 0.09vw;
+                                                color:#f9f9f9;
                                                 &:hover{
                                                     background-color: rgba(46, 87, 36, 0.63);
                                                     border:2px solid rgba(34, 170, 0, 0.63);
@@ -708,14 +717,12 @@ ngb-pagination ::ng-deep ul{
 }
 
 .searchNotClicked{
-    background-color: rgb(27, 27, 27);
     color: #f9f9f9 !important;
-    transition: 0.5s;
+    border:none;
 }
 
 .iconClicked{
-    margin-left:auto !important;
     // background-color: #f9f9f9 !important;
-    padding:10px;
     color:green;
+    filter:drop-shadow(5px 4px 1px rgb(212, 212, 212))
 }

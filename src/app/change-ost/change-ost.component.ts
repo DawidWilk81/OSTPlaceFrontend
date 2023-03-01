@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { faXmark, faCircleCheck, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faCircleCheck, faPlusCircle, faX } from '@fortawesome/free-solid-svg-icons';
 import { SongService } from '../song.service';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -31,6 +31,11 @@ export class ChangeOSTComponent implements OnInit {
   tagsSplitted:any;
   tagList:any = [];
   oldTags:any = []
+  alertSize:boolean=false;
+
+  imgWidth:any;
+  imgHeight:any;
+
   constructor(  
     private _OSTS:SongService,
     private _router:Router,
@@ -77,7 +82,9 @@ export class ChangeOSTComponent implements OnInit {
       }
     )
   }
-
+  hideAlertSize(){
+    this.alertSize = !this.alertSize;
+  }
   showTags(){
     this.getTags = !this.getTags;
   }
@@ -119,20 +126,38 @@ export class ChangeOSTComponent implements OnInit {
 
   onImageChange(event:any){
     if(event.target.files[0].name.endsWith('.jpg') || event.target.files[0].name.endsWith('.png') ){
-      this.song.cover = event.target.files[0];
+      let x = event.target.files[0];
+      console.log('xValue:', x);
+      let reader = new FileReader();
+      reader.readAsDataURL(x);
+      reader.onload=(event:any)=>{
+        console.log(event);
+        let cover = new Image();
+        cover.src = event.target.result;
+
+        cover.onload = () => {
+          this.alertSize = true;
+          this.imgWidth = cover.width;
+          this.imgHeight = cover.height;
+          console.log(this.imgWidth, 'h', this.imgHeight);
+          if(this.imgWidth > 3264 || this.imgHeight > 2448){
+            this.coverSizeError = true;
+          }else{
+            this.coverSizeError = false;
+            console.log('sdaasd', x);
+            this.song.cover = x;
+          }
+          this.imageUrl = event.target.result;
+        }
+      }
       this.coverError = false;
       this.coverGood = true;
     }else{
       this.coverError = true;
       this.coverGood = false;
     }
-
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload=(event:any)=>{
-      this.imageUrl = event.target.result;
-    }
   }
+
   clickChoosedTag(id:number){
     if(id==0){
       this.choosedTags.shift();
@@ -157,7 +182,7 @@ export class ChangeOSTComponent implements OnInit {
       if(check2 < 13063158){
         this.songSize = check2;
       }else if(check2 > 13063158) {
-        this.coverSizeError;
+        this.coverSizeError
       }
     }else{
       this.ostError = true;

@@ -342,3 +342,32 @@ small{
     white-space: nowrap;
     z-index: 20;
 }
+
+#alertSize{
+    width: 25%;
+    position: absolute;
+    bottom:50px;
+    right: 0;
+    z-index:2000;
+    animation: showAlert 0.5s linear;
+    fa-icon{
+        float:right;
+        &:hover{
+            cursor: pointer;
+            color:#0c0c0ca6;
+        }
+    }
+ }
+
+ button{
+    @extend %addOSTInputs;
+    background-color: #18aa2bb9;
+    text-align: center;
+    
+
+    &:focus{
+        -webkit-box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+        -moz-box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+        box-shadow: inset -11px -10px 24px 0px rgba(9, 9, 9, 1);
+    }
+ }

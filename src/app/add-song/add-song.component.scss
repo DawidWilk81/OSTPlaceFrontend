@@ -251,6 +251,9 @@
                     #title{
                         height: 15%;
                         position: relative;
+                        ::placeholder{
+                            color:#bebebebd;
+                        }
                     label{
                         @include respectFont(6vw, 3vw, 2vw, 1.5vw, 1.2vw);
                     }    

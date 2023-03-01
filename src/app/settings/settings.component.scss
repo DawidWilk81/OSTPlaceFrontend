@@ -60,8 +60,13 @@
                     @extend %centerFlex;
                     flex-direction: column;
                     position: relative;
-                    width: 100%;
+                    width: 100%;   
 
+                    form{
+                        display:flex;
+                        flex-direction: column;
+                        
+                    }
                     #avatarCircle{
                         width: 7vw;
                         height: 7vw;
@@ -69,6 +74,7 @@
                         border-radius: 100px;
                         position: relative;
                         border: 2px solid rgba(7, 7, 7, 0.274);
+                        margin:0 auto;
                         @extend %centerFlex;
                         @include respectFont(3vw, 3vw, 2.5vw, 2vw, 1vw,);
                         
@@ -90,8 +96,8 @@
                         -webkit-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
                         -moz-box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);
                         box-shadow: inset -7px 1px 17px -4px rgba(0, 0, 0, 0.55);          
-                        width: 70%;
-                      
+                        width: 100%;
+                        padding:0px 5px;
                     }
                     label{
                         position: relative;
@@ -107,6 +113,7 @@
                 form{
                     color:#7ae67a;
                     font-size:1.5vw;
+
                     .form-group{
                         label{
                             margin-left:5%;

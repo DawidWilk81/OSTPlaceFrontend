@@ -1,6 +1,7 @@
 @import '../../scss/_variables.scss';
 @import '../../scss/_placeholders.scss';
 @import '../../scss/_mixins.scss';
+@import '../../scss/_keyframes.scss';
 
 #basketWhole{
     background: rgb(0,0,0);
@@ -119,3 +120,19 @@
         }
     }
 }                        
+
+.alert{
+    width: 25%;
+    position: absolute;
+    bottom:50px;
+    right: 0;
+    z-index:2000;
+    animation: showAlert 0.5s linear;
+    fa-icon{
+        float:right;
+        &:hover{
+            cursor: pointer;
+            color:#0c0c0ca6;
+        }
+    }
+ }

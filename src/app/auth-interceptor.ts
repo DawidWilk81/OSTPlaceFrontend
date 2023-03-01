@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpEvent, HttpResponse, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpInterceptor, HttpEvent, HttpResponse, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
-
-
+import { tap } from 'rxjs/operators';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     constructor(
@@ -36,7 +35,12 @@ export class AuthInterceptor implements HttpInterceptor {
     if(this._router.routerState.snapshot.url.includes('home')){
       this._router.navigateByUrl('');
       }
-      return next.handle(request)
+      return next.handle(request).pipe( tap(() => {},
+      (err: any) => {
+      if (err instanceof HttpErrorResponse) {
+        this._router.navigateByUrl('login');
+      }
+      }));
     }
     return next.handle(request);
   }

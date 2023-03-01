@@ -1,4 +1,9 @@
 <div class="container-fluid m-0 p-0" id="changeOSTWhole" >
+    <!-- IMG RESOLUTION ALERT -->
+    <div class="alert alert-info" id="alertSize"  *ngIf="alertSize" role="alert">
+        <fa-icon [icon]="xmark" (click)="hideAlertSize()"></fa-icon>
+        Your image resolution is: {{imgWidth}} x {{imgHeight}}. Accepted resolution is below 3000 x 5000
+      </div>
     <!-- Choose tags Container -->
     <div id="tagList" class="p-3" *ngIf="getTags">
         <fa-icon [icon]="xmark" (click)="hideTags()"></fa-icon>

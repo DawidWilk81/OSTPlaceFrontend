@@ -1,4 +1,8 @@
 <div class="container-fluid m-0 p-0" id="basketWhole">
+    <div class="alert alert-info"  *ngIf="emptyBasket" role="alert">
+        <fa-icon [icon]="xSign" (click)="emptyBasketAlert()"></fa-icon>
+        Your basket unfortunately got no items to buy.
+    </div>
     <div id="musicPlayer" #musicPlayer>
         <p #title></p>
         <audio controls id="audioBox" #audioBox [hidden]="!isPlaying">
