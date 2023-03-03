@@ -1,7 +1,7 @@
 <div class='container-fluid p-0 m-0' id="whole">
   <div id="musicPlayer" #musicPlayer>
     <p #title></p>
-    <audio controls id="audioBox" #audioBox [hidden]="!isPlaying">
+    <audio controls id="audioBox" #audioBox [hidden]="!isPlaying" controlsList="nodownload">
       <source type="audio/mpeg" id='audio' #audio/>
       <source type="audio/wav" id='audioWav' #audio/>
     </audio>
