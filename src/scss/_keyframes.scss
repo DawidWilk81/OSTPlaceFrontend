@@ -44,6 +44,17 @@
     }
 }
 
+@keyframes showSideSearch {
+    0%{
+        width: 0;
+    }100%{
+
+        width: 25vw !important;
+    }
+}
+
+
+
 // @keyframes naviAnimation {
 //     0%{
 //         border-radius: 100px;

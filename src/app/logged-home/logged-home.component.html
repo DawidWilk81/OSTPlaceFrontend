@@ -1,4 +1,50 @@
 <div class='container-fluid p-0 m-0' id="whole">
+<!-- Side search OSTS  -->
+  <div class="container-fluid" id="sideSearchContainer" *ngIf="showSearch">
+    <div class="row m-0 p-1" id="sideSearch">
+      <form class="p-2">
+        <b class="hide" (click)="exitSearch()"> Hide</b>
+        
+        <div class="form-group">
+          <b>Title</b>
+          <input type="text" class="form-control" id="titleInput" aria-describedby="searchByTitle" placeholder="Enter Title" name="title"  [(ngModel)]="searchOstsOptions.title">
+        </div>
+        <div class="form-group">
+          <div class="row w-100">
+            <div class="col-6 d-flex flex-column">
+              <b>Price from</b>
+              <input type="number" class="form-control" id="priceFrom" placeholder="Price" min="1" max="100000" #priceFrom [(ngModel)]="searchOstsOptions.priceFrom" name="priceFrom" (ngModelChange)="checkPriceFrom($event)">
+            </div>
+            <div class="col-6 d-flex flex-column" >
+              <b>Price to</b>
+              <input type="number" class="form-control" id="priceTo" placeholder="2" min="2" max="100000" #priceTo [(ngModel)]="searchOstsOptions.priceTo" name="priceTo" (ngModelChange)="checkPriceTo($event)">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group" id="tagsSearch">
+          <b>Tags</b>
+          <ul id="tagsUl" class="m-0 p-2">
+            <li *ngFor="let tag of tagList" (click)="clickTag(tag['id']-1)">{{tag['name']}}</li>
+          </ul>
+        </div>
+
+        <div class="form-group" id="choosedTags">
+          <b class="ml-3">Choosed Tags</b>
+          <ul id="ChoosedtagsUl" class="m-0 p-2">
+            <li *ngFor="let tag of choosedTags; index as i" class="m-1" (click)="clickChoosedTag_Search(i)">{{tag}}</li>
+          </ul>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-75" (click)="searchOSTS()" >Search</button>
+        <button type="submit" class="btn btn-primary w-25" (click)="cleanOutSearch()">
+          <fa-icon [icon]="broom"></fa-icon>CLEAN OUT 
+        </button>
+        <b *ngIf="searchRN">Found {{collectionSize}} items!</b>
+      </form>
+    </div>
+  </div>
 <!-- ALERTS -->
   <div class="alertInfo alert-info" *ngIf="alreadyInBasket" role="alert">
     <fa-icon [icon]="xSign" (click)="hideAlready()"></fa-icon>
@@ -18,18 +64,20 @@
         <source type="audio/wav" id='audioWav' #audio/>
       </audio>
     </div>
+<!-- CHECK OST INFO -->
 
-    <div *ngIf='clickedOST' id="checkInfo" class="p-0 m-0">
-      <div class="row m-0 p-0 w-100 h-100">
-        <div class="col-12" id="OSTImage">
-          <div id="avatar">
-                <img [src]='userAccount.avatar' alt='author avatar'/>
-          </div>
-          <div id="price">
-            <b>{{OSTChecking.price| currency}}</b>
-          </div>
-          <img [src]='OSTChecking.cover' alt='OSTimage'/>
+<div class="container-fluid" id="sideCheckContainer" *ngIf='clickedOST'>
+  <div class="row m-0 p-1" id="sideCheck">
+    <div class="row m-0 p-0 w-100 h-100">
+      <div class="col-12" id="OSTImage">
+        <div id="avatar">
+              <img [src]='userAccount.avatar' alt='author avatar'/>
         </div>
+        <div id="price">
+          <b>{{OSTChecking.price| currency}}</b>
+        </div>
+        <img [src]='OSTChecking.cover' alt='OSTimage'/>
+      </div>
         <div class="col-12 p-0 m-0" id="OSTInfo">
           <div class="row w-100 h-100 p-0 m-0 ">
 
@@ -55,10 +103,48 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
+</div>
+<!-- <div *ngIf='clickedOST' id="checkInfo" class="p-0 m-0">
+  <div class="row m-0 p-0 w-100 h-100">
+      <div class="col-12" id="OSTImage">
+        <div id="avatar">
+              <img [src]='userAccount.avatar' alt='author avatar'/>
+        </div>
+        <div id="price">
+          <b>{{OSTChecking.price| currency}}</b>
+        </div>
+        <img [src]='OSTChecking.cover' alt='OSTimage'/>
+      </div>
+        <div class="col-12 p-0 m-0" id="OSTInfo">
+          <div class="row w-100 h-100 p-0 m-0 ">
+
+            <div class="col-12 text-center" id="title" ><b>{{OSTChecking.title}}</b></div>
+            <div class="col-12" id="tags" class="m-0 p-0">
+              <ul id="tagsUL" class="m-0 p-0">
+                <li *ngFor="let x of OSTChecking.tags" class="my-auto" >{{tagList[x-1].name}}</li>
+              </ul>
+            </div>
+            <div class="col-12 p-2" id="desc">
+              <p>{{OSTChecking.desc}}</p>
+              <span id="date" class="text-right">
+                  Added: {{OSTChecking.date|date}} <br> by: <b id="username">{{userAccount.user}}</b>
+              </span>
+            </div>
+
+            <div class="col-12" id="OSTButtons">
+              <button class="btn btn-primary w-25" [disabled]="username == OSTChecking.author" (click)="addToBasket()">Add to basket</button>
+              <button class="btn btn-danger w-25 ml-auto" (click)="exitOST()">exit</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     <!-- SEARCH TAB -->
-    <div id="search" *ngIf="showSearch">
+    <!-- <div id="search" *ngIf="showSearch">
 
       <form class="p-2">
         <div class="xSign"><fa-icon [icon]='xSign' (click)="exitSearch()"></fa-icon></div>
@@ -101,7 +187,7 @@
         </button>
         <b *ngIf="searchRN">Found {{collectionSize}} items!</b>
       </form>
-    </div>
+    </div> -->
 <!-- Search TAB END -->
     <div class="row m-0 p-0" id="unloggedRow">
       <!-- NAVIGATION -->
