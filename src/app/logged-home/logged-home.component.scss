@@ -722,13 +722,7 @@
         // OSTCHECKING DESCRIPTIO
 
     }
-    #musicPlayer{
-        @extend %musicPlayer;
-        #audioBox{
-            width: 100%;
-            background-color: $contentBackground;
-        }
-    }
+
 #unloggedRow{
     height: 100%;
     
@@ -973,7 +967,7 @@
                                     }
                                     .OSTButtons{
                                         width: 100%;
-                                        height: 20%;
+                                        height: 15%;
                                         border-radius: 0 0 20px 20px;
 
                                             button{
@@ -988,6 +982,10 @@
                                                 @include respectFont(4vw, 3vw, 2vw, 1.4vw, 0.8vw);
                                                 letter-spacing: 0.09vw;
                                                 color:#f9f9f9;
+                                                background: linear-gradient(140deg, #fafafa00, #141414) padding-box,
+                                                linear-gradient( #e7e7e733, rgba(0, 128, 0, 0.74), rgba(0, 197, 0, 0.911)) border-box;
+                                                border-radius: 50em;
+                                                border: 2px solid transparent;
                                                 &:hover{
                                                     background-color: rgba(46, 87, 36, 0.63);
                                                     border:2px solid rgba(34, 170, 0, 0.63);
@@ -1082,3 +1080,10 @@ ngb-pagination ::ng-deep ul{
     filter:drop-shadow(5px 4px 1px rgb(212, 212, 212))
 }
 
+#musicPlayer{
+    @extend %musicPlayer;
+    #audioBox{
+        width: 100%;
+        background-color: $contentBackground;
+    }
+}

@@ -6,7 +6,7 @@ b{
     font-family: 'Imbue', serif;
 }
 #whole{
-    min-height: 250vh;
+    min-height: 150vh;
     height: auto;
     background: rgb(0,0,0);
     background: $contentBackground;
@@ -14,13 +14,11 @@ b{
     position: relative;
     font-family: 'Imbue', serif;
     perspective: 2px;
-    #musicPlayer{
-        @extend %musicPlayer;
-        #audioBox{
-            width: 100%;
-            background-color: $contentBackground;
-        }
-    }
+
+
+}
+p{
+    color:#f9f9f9;
 }
 #unloggedRow{
     height: 100%;
@@ -53,7 +51,8 @@ b{
                     @extend %GreenLi;
                     height: auto;
                     width: 30%;
-                    background-color: #3a3a3a;                        border-radius: 50px;
+                    background-color: #3a3a3a;                        
+                    border-radius: 50px;
                     @include respectFont(5vw, 3vw, 2.5vw, 1.2vw, 1.1vw);
                     white-space: nowrap;
                 }
@@ -71,14 +70,11 @@ b{
             background-image: url('../../assets/bgPhoto.jpg');
             background-repeat: no-repeat;
             background-position: center;
-            position: relative;
-            @extend %centerFlex;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-attachment: fixed;
             background-size: cover;
-            transform-style: preserve-3d;
+            position: relative;
+            @extend %centerFlex;
+
             -webkit-box-shadow: inset 4px -64px 34px -12px rgba(25, 25, 25, 0.97);
             -moz-box-shadow: inset 4px -64px 34px -12px rgba(25, 25, 25, 0.97);
             box-shadow: inset 4px -64px 34px -12px rgba(25, 25, 25, 0.97);
@@ -129,6 +125,9 @@ b{
                                     img{
                                         @extend %MaxSize;
                                         border-radius: 15px;
+                                        -webkit-box-shadow: 8px 8px 8px 1px rgba(12, 12, 12, 1);
+                                        -moz-box-shadow: 8px 8px 8px 1px rgba(12, 12, 12, 1);
+                                        box-shadow: 8px 8px 8px 1px rgba(12, 12, 12, 1);
                                         &:hover{
                                             filter:blur(2px);
                                             cursor: pointer;
@@ -148,7 +147,7 @@ b{
                                 }
                                 .title{
                                     overflow:hidden;
-                                    height: 25%;
+                                    height: 20%;
                                     padding: 5px;
                                     color:#56b144;
                                     line-height: 95%;
@@ -168,7 +167,7 @@ b{
                                         margin:0;
                                         padding:0;
                                         .author{
-                                            @include respectFont(3.5vw, 2.5vw, 1.4vw, 1.2vw, 0.8vw);
+                                            @include respectFont(3.5vw, 2.5vw, 1.4vw, 1.2vw, 1vw);
                                         }
     
                                         .buy{
@@ -222,9 +221,12 @@ b{
                                     width: 20px;
                                     margin:5px;
                                     border-radius: 20px;
-                                    border:1px solid #f9f9f94b;
                                     float: left;
                                     @extend %centerFlex;
+                                    background: linear-gradient(140deg, #fafafa00, #141414) padding-box,
+                                    linear-gradient( #e7e7e733, rgba(0, 128, 0, 0.74), rgba(0, 197, 0, 0.911)) border-box;
+                                    border-radius: 50em;
+                                    border: 2px solid transparent;
                                     // background-color: rgba(15, 14, 14, 1);
                                     // background-image: radial-gradient(circle, rgba(15, 14, 14, 1) 9%, rgba(28, 34, 28, 1) 93%);
                                     
@@ -283,3 +285,13 @@ b{
     height: 75%;
 }
 
+#musicPlayer{
+    @extend %musicPlayer;
+    position:fixed;
+    bottom:0;
+
+    #audioBox{
+        width: 100%;
+        background-color: $contentBackground;
+    }
+}

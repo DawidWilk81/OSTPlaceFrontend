@@ -1,11 +1,11 @@
+<div id="musicPlayer" #musicPlayer>
+  <p #title></p>
+  <audio controls id="audioBox" #audioBox [hidden]="!isPlaying" controlsList="nodownload">
+    <source type="audio/mpeg" id='audio' #audio/>
+    <source type="audio/wav" id='audioWav' #audio/>
+  </audio>
+</div>
 <div class='container-fluid p-0 m-0' id="whole">
-  <div id="musicPlayer" #musicPlayer>
-    <p #title></p>
-    <audio controls id="audioBox" #audioBox [hidden]="!isPlaying" controlsList="nodownload">
-      <source type="audio/mpeg" id='audio' #audio/>
-      <source type="audio/wav" id='audioWav' #audio/>
-    </audio>
-  </div>
   <div class="row m-0" id="unloggedRow">
     <div class="col-12 p-0" id="naviContainer">
       <nav class="nav row m-0 sticky-top navbar">
@@ -34,11 +34,11 @@
                 <div class="row m-0 p-0">
                   <div class="col-12 top p-0">
                     <div class="row m-0 p-0">
-                      <div class="col-4 p-0 musicIMG">
+                      <div class="col-5 p-0 musicIMG">
                         <div class="imgHover"><fa-icon [icon]='playHover'></fa-icon></div>
                         <img [src]='x.cover' alt='OSTImage' (click)="playAudio(x.ost, x.title)">
                       </div>
-                      <div class="col-8 musicInfo p-0">
+                      <div class="col-7 musicInfo p-0">
                         <div class="col-12 price d-flex justify-content-end align-content-center">{{x.price}} $</div>
                         <div class="col-12 title"><b>{{x.title}}</b></div>
                         <div class="col-12 info mt-5">
