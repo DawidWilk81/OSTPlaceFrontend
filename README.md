@@ -21,7 +21,7 @@ Firstly User will see unlogged page, where he can click on image and listen to e
 #SearchTAB
 <img src='www/mainPageSearch.png' alt='loggedHomePage'/>
 
-## Both versions of search result can be sorted
+## Both versions of search result can be sorted like in image below by descending price.
 <img src='www/loggedSearchResultSortBy.png' alt='loggedSearchResultSortBy'/>
 
 #Tag click
@@ -37,7 +37,7 @@ Firstly User will see unlogged page, where he can click on image and listen to e
 <img src='www/settings.png' alt='settings'/>
 
 ### And ofcourse buy OSTS. On example image below user "wilkixx123" has been added a song, so "testUser202" might be able to buy it by clicking "check OST" and "add to basket" button.
-<img src='www/AddItemToBasket.png' alt='checkOSTnewUser'/>
+<img src='www/AddItemToBasket.PNG' alt='checkOSTnewUser'/>
 
 ### in basket user will see added items that he is going to buy or remove from basket.
 <img src='www/basket.png' alt='ItemBasket'/>
