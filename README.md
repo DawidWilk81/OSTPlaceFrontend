@@ -17,10 +17,14 @@ Firstly User will see unlogged page, where he can click on image and listen to e
 ### After that user can login correctly into site for logged users.
 <img src='www/loggedHomePage.png' alt='loggedHomePage'/>
 
-## User can sort by searchTab and by simple click on tag in OST.
-SearchTAB
+## User can sort by search Tab and by simple click on tag in OST.
+#SearchTAB
 <img src='www/mainPageSearch.png' alt='loggedHomePage'/>
-Tag click
+
+## Both versions of search result can be sorted
+<img src='www/loggedSearchResultSortBy.png' alt='loggedSearchResultSortBy'/>
+
+#Tag click
 <img src='www/loggedPageSearchTag.png' alt='loggedHomePage'/>
 
 ### On OST place user can add his song for real money.
