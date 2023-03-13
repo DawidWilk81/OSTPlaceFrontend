@@ -68,6 +68,6 @@ seller myOSTS component
 <img src='www/SOLDandGOTNOT.png' alt='SOLDandGOTNOT'/>
 
 ## stripe customer balance after he sold item
-<img src='www/stripeAccountMoney.png' alt='stripeAccountMoney'/>
+<img src='www/stripeAccountMoney.PNG' alt='stripeAccountMoney'/>
 
 # And thats how it works at the moment.
