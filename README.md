@@ -60,11 +60,11 @@ user
 stripe
 <img src='www/stripeCLISuccess.png' alt='stripeCLISuccess'/>
 
-### After payment basket
-customer basket
+### After payment MyOsts
+customer myOSTS component
 <img src='www/bought and got.png' alt='bought and got'/>
 
-seller basket
+seller myOSTS component
 <img src='www/SOLDandGOTNOT.png' alt='SOLDandGOTNOT'/>
 
 ## stripe customer balance after he sold item
